@@ -40,6 +40,8 @@ jobs:
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.repository.default_branch }}   # always the latest files (also on "Re-run")
 
       - name: Repair repo layout
         run: |
@@ -138,6 +140,8 @@ jobs:
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.repository.default_branch }}   # always the latest files (also on "Re-run")
 
       - name: Skip if an old copy of site-manager.yml would reply twice
         id: dup
