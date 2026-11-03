@@ -115,6 +115,11 @@ def cmd_test(sites, args):
         set_status(s, builder=b, can_scripts=info["unfiltered_html"])
         if not info["unfiltered_html"]:
             log("   i FAQ schema is skipped (needs an Administrator user); FAQ text is still added")
+        if not s.gsc_property:
+            log("   · Search Console: not connected (optional) — keywords come from Autocomplete, competitors and live research")
+            r["search_console"] = "— not used (optional)"
+            set_status(s, gsc_error=None)
+            return
         try:
             g = gsc.fetch(s)
             log(f"   ✓ Search Console: {len(g['queries'])} query rows")
@@ -141,11 +146,12 @@ def cmd_audit(sites, args):
 
 def cmd_research(sites, args):
     def run(s):
-        try:
-            g = gsc.fetch(s)
-            log(f"   ✓ Search Console: {len(g['queries'])} rows")
-        except gsc.GSCUnavailable as e:
-            log(f"   ! Search Console skipped: {e}")
+        if s.gsc_property:
+            try:
+                g = gsc.fetch(s)
+                log(f"   ✓ Search Console: {len(g['queries'])} rows")
+            except gsc.GSCUnavailable as e:
+                log(f"   ! Search Console skipped: {e}")
         kws = keywords.discover(s)
         log(f"   ✓ {len(kws)} autocomplete keywords")
     return each(sites, "research", run)
@@ -167,7 +173,7 @@ def cmd_indexcheck(sites, args):
     """For blogs the platform published 5+ days ago: ask Google whether each one is indexed."""
     def run(s: Site):
         if not s.gsc_property:
-            log("   ! no gsc_property — skipped")
+            log("   · Search Console not connected — index check skipped (optional)")
             return
         hist = planner.history(s)
         wp = WordPress(s) if s.wp_password else None
@@ -336,7 +342,7 @@ def write_summary(command: str, sites: list[Site], errors: dict) -> None:
     out = [f"## SEO Autopilot · `{command}`\n"]
     if command == "test":
         glob = [("Claude API key (`ANTHROPIC_API_KEY`)", bool(os.environ.get("ANTHROPIC_API_KEY"))),
-                ("Search Console (`GSC_SERVICE_ACCOUNT_JSON`)", bool(os.environ.get("GSC_SERVICE_ACCOUNT_JSON"))),
+                ("Search Console (`GSC_SERVICE_ACCOUNT_JSON`, optional)", bool(os.environ.get("GSC_SERVICE_ACCOUNT_JSON"))),
                 ("Free photos (`PEXELS_API_KEY`, optional)", bool(os.environ.get("PEXELS_API_KEY")))]
         out.append("| Repo setting | |\n|---|---|")
         out += [f"| {n} | {'✅' if ok else ('⚠️ optional' if 'optional' in n else '❌ missing')} |" for n, ok in glob]
