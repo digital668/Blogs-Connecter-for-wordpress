@@ -19,6 +19,8 @@ def site_report(site: Site) -> dict:
     opp = _load(site.data_dir / "opportunities.json") or {}
     links = _load(site.data_dir / "links.json") or {}
     status = _load(site.data_dir / "status.json") or {}
+    if not site.gsc_property:
+        status.pop("gsc_error", None)   # Search Console is optional — never show it as an error when not set up
     pages = inv["pages"]
     issues = inv["issues"]
     counts = {s: sum(1 for i in issues if i["severity"] == s) for s in ("high", "medium", "low")}
