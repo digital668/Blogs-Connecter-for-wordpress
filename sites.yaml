@@ -1,0 +1,111 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  SEO Autopilot — websites
+#  You normally don't edit this by hand: add a website with GitHub → Issues →
+#  New issue → "Add a website", and manage it with commands on that issue
+#  (/test /write /pause /resume /mode /every /remove /help).
+#  Each site's Connector-plugin key lives in a GitHub secret WP_PASS_<KEY>
+#  (key upper-cased, dashes → underscores), e.g. kaizen-klub → WP_PASS_KAIZEN_KLUB
+# ─────────────────────────────────────────────────────────────────────────────
+
+defaults:
+  language: English
+  country: US
+  interval_days: 2
+  review_days: 3
+  min_words: 1200
+  builder: auto
+  use_web_research: true
+  images: true
+  toc_plugin: false
+  publish_mode: draft
+  ymyl: false
+  pause_on_traffic_drop: 0.35
+  default_category: Blog
+sites:
+- key: globel-connect
+  name: Globel Connect
+  url: https://globelconnect.in
+  country: US
+  group: us-it-bpo
+  builder: auto
+  publish_mode: draft
+  min_words: 1100
+  default_category: Blogs
+  niche: B2B lead generation (healthcare/medical, education, financial, customised and digital-marketing leads)
+    and IT/BPO outsourcing (data entry, e-support, international call center, data conversion)
+  audience: Owners and marketing/operations heads of healthcare, education and finance businesses who want affordable,
+    high-quality leads or want to outsource support and back-office work
+  tone: Professional, clear and practical B2B — trustworthy and transparent, no hype
+  seed_keywords:
+  - healthcare lead generation
+  - education lead generation
+  - b2b lead generation services
+  - data entry outsourcing
+  - international call center services
+  - financial lead generation
+  competitors: []
+  writing_rules: |
+    - Write for business buyers: explain costs, process, quality checks, compliance and what to ask a vendor.
+    - Where relevant, link to these service pages: https://globelconnect.in/healthcare-lead-generation/ ,
+      https://globelconnect.in/education-lead-generation/ , https://globelconnect.in/financial-lead-generation-2/ ,
+      https://globelconnect.in/customized-lead-generation/ , https://globelconnect.in/data-entry-services/ ,
+      https://globelconnect.in/international-call-center-services/ , https://globelconnect.in/e-support-services/ ,
+      https://globelconnect.in/data-conversion-services/ , https://globelconnect.in/digital-marketing-services/
+    - Never promise guaranteed lead numbers, conversion rates or ROI; no invented client results or testimonials.
+    - For healthcare/finance leads, mention consent and data-privacy compliance (e.g. TCPA, HIPAA, GDPR where relevant)
+      in general terms only — no legal advice.
+  cta:
+    title: Need better leads or extra support capacity?
+    text: Tell us about your business and goals — the Globel Connect team will suggest the right lead generation
+      or outsourcing plan.
+    button: Talk to Our Team
+    url: https://globelconnect.in/contact-us/
+  enabled: true
+  issue: null
+- key: kaizen-klub
+  name: Kaizen Klub
+  url: https://blogs.kaizenklub.in
+  country: IN
+  builder: auto
+  publish_mode: draft
+  min_words: 1100
+  niche: Community gym in Koramangala, Bengaluru — strength & conditioning, MMA & striking, yoga & mobility, transformation
+    programs, and recovery (cold plunge, sauna, red light therapy)
+  audience: Bengaluru gym-goers, beginners and working professionals in Koramangala / HSR who want coached training
+    and proper recovery
+  tone: Coach-like, warm and practical — "Train. Recover. Belong." Small, relentless improvements.
+  seed_keywords:
+  - gym in koramangala
+  - strength training for beginners
+  - mma classes in bangalore
+  - recovery gym bangalore
+  - yoga classes in koramangala
+  competitors:
+  - cult.fit
+  external_links_ok:
+  - acefitness.org
+  - acsm.org
+  - powerlifting.sport
+  - health.harvard.edu
+  - hss.edu
+  writing_rules: |
+    - Use the focus keyword about 10–12 times in 1,100–1,400 words (~1% density), including the first sentence,
+      1–2 H2 headings and the conclusion — always natural, never forced.
+    - Do NOT give free workout plans, home-workout routines, downloadable trackers or DIY templates.
+      Instead, steer readers to train with a Kaizen Klub coach and to take the free assessment.
+    - Mention Kaizen Klub naturally where it genuinely helps (coached small-group sessions, recovery facilities:
+      cold plunge, sauna, red light therapy), never as a hard sell in every paragraph.
+    - Only realistic timelines and claims (e.g. strength gains in 2–4 weeks, visible changes in 6–8+ weeks).
+    - Use 1–2 trusted external sources only: Cleveland Clinic, Mayo Clinic, Harvard Health, NHS, CDC, WHO,
+      NCCIH, ACE Fitness, ACSM, HSS — with real, existing URLs.
+    - Where it fits, link to: https://kaizenklub.in/programs/strength , https://kaizenklub.in/programs/yoga ,
+      https://kaizenklub.in/programs/mma
+    - Indian context: Indian foods, ₹ prices, Bengaluru weather/traffic where relevant.
+  cta:
+    title: Not sure where to start?
+    text: Book a free assessment with a Kaizen Klub coach — we'll check your strength, mobility and goals, then
+      build your first month with you.
+    button: Take Free Assessment
+    url: https://forms.fillout.com/t/61JKRjYhkkus
+  enabled: true
+  issue: null
