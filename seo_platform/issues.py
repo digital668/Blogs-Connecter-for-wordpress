@@ -89,7 +89,7 @@ def summary_table(e: dict) -> str:
             ("Publishing", ("drafts for you to review" if e.get("publish_mode", "draft") == "draft" else "auto-scheduled after review window")
              + (" · health/finance site → always drafts" if e.get("ymyl") else "")),
             ("Cadence", f"one blog every {e.get('interval_days', 2)} days"),
-            ("Search Console", e.get("gsc_property") or "not set — `/set gsc sc-domain:yourdomain.com`"),
+            ("Search Console", e.get("gsc_property") or "not connected (optional)"),
             ("Call-to-action", f"{(e.get('cta') or {}).get('button', '—')} → {(e.get('cta') or {}).get('url', '—')}")]
     return "| Setting | Value |\n|---|---|\n" + "\n".join(f"| {k} | {str(v).replace('|', '/')} |" for k, v in rows)
 
