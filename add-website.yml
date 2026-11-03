@@ -1,0 +1,72 @@
+name: "🌐 Add a website"
+description: Connect a WordPress site to SEO Autopilot. Just paste the address; everything else is filled in automatically.
+title: "Add website"
+labels: ["add-website"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Paste the website address and click **Submit new issue**. Within about a minute this issue will reply with
+        the settings it worked out (niche, audience, keywords, competitors, page builder) and 3 short steps to connect.
+  - type: input
+    id: url
+    attributes:
+      label: Website address
+      description: The WordPress site where blogs should go (e.g. https://blogs.example.com)
+      placeholder: https://example.com
+    validations:
+      required: true
+  - type: dropdown
+    id: country
+    attributes:
+      label: Target country
+      description: Which market should the blogs target?
+      options:
+        - Auto-detect from the website
+        - US — United States
+        - IN — India
+        - GB — United Kingdom
+        - CA — Canada
+        - AU — Australia
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: publish
+    attributes:
+      label: Publishing
+      options:
+        - Drafts — I review and publish them myself (recommended to start)
+        - Scheduled — they go live automatically after a 3-day review window
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: often
+    attributes:
+      label: How often
+      options:
+        - Every 2 days
+        - Every 3 days
+        - Every 7 days
+      default: 0
+    validations:
+      required: true
+  - type: checkboxes
+    id: sensitive
+    attributes:
+      label: Sensitive topics
+      options:
+        - label: This site gives health, medical, finance or legal advice (every post will wait for my approval)
+  - type: input
+    id: competitors
+    attributes:
+      label: Competitors (optional)
+      description: Competitor websites, separated by commas. Leave empty to let it find them.
+      placeholder: competitor1.com, competitor2.com
+  - type: textarea
+    id: notes
+    attributes:
+      label: Special instructions (optional)
+      description: Anything the writer must always or never do for this site
+      placeholder: e.g. Never give free workout plans; always invite readers to book a free assessment.
