@@ -1,0 +1,13 @@
+[
+ {
+  "at": "2026-11-03T18:22:55+00:00",
+  "model": "claude-sonnet-5-5",
+  "articles": 0,
+  "errors": {
+   "globel-connect": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'tool_choice: type \"tool\" and \"any\" are not supported for this model.'}, 'request_id': 'req_011CggTgRUG4Ac8CNutTweRx'}"
+  },
+  "usage": {},
+  "est_cost_usd": 0.0,
+  "drafts": 0
+ }
+]

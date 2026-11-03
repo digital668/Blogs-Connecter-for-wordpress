@@ -3,5 +3,6 @@
  "builder": "divi",
  "can_scripts": true,
  "gsc_error": null,
- "test_ok": "2026-11-03T18:19:06+00:00"
+ "test_ok": "2026-11-03T18:19:06+00:00",
+ "write_error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'tool_choice: type \"tool\" and \"any\" are not supported for this model.'}, 'request_id': 'req_011CggTgRUG4Ac8CNutTweRx'}"
 }
