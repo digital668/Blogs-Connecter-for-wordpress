@@ -61,7 +61,7 @@ sites:
     button: Talk to Our Team
     url: https://globelconnect.in/contact-us/
   enabled: true
-  issue: null
+  issue: 1
 - key: kaizen-klub
   name: Kaizen Klub
   url: https://blogs.kaizenklub.in
