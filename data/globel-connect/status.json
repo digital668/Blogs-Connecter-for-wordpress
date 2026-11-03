@@ -2,6 +2,6 @@
  "test_error": null,
  "builder": "divi",
  "can_scripts": true,
- "gsc_error": "no gsc_property in sites.yaml",
- "test_ok": "2026-11-03T17:31:23+00:00"
+ "gsc_error": null,
+ "test_ok": "2026-11-03T17:48:42+00:00"
 }

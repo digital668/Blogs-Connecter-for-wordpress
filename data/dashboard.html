@@ -70,6 +70,11 @@
   <a id="addsite" class="btn" target="_blank" rel="noopener" style="display:none">＋ Add website</a>
 </header>
 <main>
+  <div class="err" id="noscript-msg" style="margin-bottom:16px">
+    <b>Dashboard data isn't loading.</b> Your browser is not running this page's script, or this isn't the right file.<br>
+    • Open <b>dashboard.html</b> from a run's <i>Artifacts → dashboard</i> download (unzip it first), in Chrome or Edge.<br>
+    • Don't open <code>docs/index.html</code> directly from your computer, and don't view it inside GitHub's file viewer, an e-mail or a chat preview.
+  </div>
   <section id="overview">
     <div class="kpis" id="kpis"></div>
     <div class="card"><table id="sites"></table></div>
@@ -79,7 +84,12 @@
   <section id="detail"></section>
 </main>
 <script>
-window.EMBED = {"generated_at":"2026-11-03T17:31:23+00:00","paused":false,"repo":"https://github.com/digital668/Blogs-Connecter-for-wordpress","sites":[{"key":"globel-connect","name":"Globel Connect","url":"https://globelconnect.in","enabled":true,"publish_mode":"draft","health":null,"interval_days":2,"builder":"divi","pages":0,"posts":0,"issue_counts":{"high":0,"medium":0,"low":0},"crawled_at":null,"status":{"test_error":null,"builder":"divi","can_scripts":true,"gsc_error":"no gsc_property in sites.yaml","test_ok":"2026-11-03T17:31:23+00:00"},"issue":null,"clicks":null,"clicks_prev":null,"impressions":null,"impressions_prev":null,"articles_total":0,"indexed":0,"index_checked":0,"needs_review":0,"avg_rankmath":null,"next_scheduled":null},{"key":"kaizen-klub","name":"Kaizen Klub","url":"https://blogs.kaizenklub.in","enabled":true,"publish_mode":"draft","health":null,"interval_days":2,"builder":"auto","pages":0,"posts":0,"issue_counts":{"high":0,"medium":0,"low":0},"crawled_at":null,"status":{"test_error":"secret WP_PASS_KAIZEN_KLUB is not set"},"issue":null,"clicks":null,"clicks_prev":null,"impressions":null,"impressions_prev":null,"articles_total":0,"indexed":0,"index_checked":0,"needs_review":0,"avg_rankmath":null,"next_scheduled":null}],"runs":[],"details":{"globel-connect":{"key":"globel-connect","name":"Globel Connect","url":"https://globelconnect.in","enabled":true,"publish_mode":"draft","interval_days":2,"builder":"divi","group":"us-it-bpo","ymyl":false,"issue":null,"crawled_at":null,"pages":0,"posts":0,"health":null,"issue_counts":{"high":0,"medium":0,"low":0},"issues":[],"site_checks":{},"gsc":{},"candidates":[],"competitor_gaps":[],"refresh":[],"internal_links":[],"prospecting":[],"articles":[],"status":{"test_error":null,"builder":"divi","can_scripts":true,"gsc_error":"no gsc_property in sites.yaml","test_ok":"2026-11-03T17:31:23+00:00"}},"kaizen-klub":{"key":"kaizen-klub","name":"Kaizen Klub","url":"https://blogs.kaizenklub.in","enabled":true,"publish_mode":"draft","interval_days":2,"builder":"auto","group":null,"ymyl":false,"issue":null,"crawled_at":null,"pages":0,"posts":0,"health":null,"issue_counts":{"high":0,"medium":0,"low":0},"issues":[],"site_checks":{},"gsc":{},"candidates":[],"competitor_gaps":[],"refresh":[],"internal_links":[],"prospecting":[],"articles":[],"status":{"test_error":"secret WP_PASS_KAIZEN_KLUB is not set"}}}};
+window.addEventListener("error", e => {
+  const m = document.getElementById("noscript-msg");
+  if (m) { m.style.display = "block"; m.innerHTML = "<b>Dashboard error:</b> " + String(e.message).replace(/</g, "&lt;") + " — please send a screenshot of this message."; }
+});
+document.getElementById("noscript-msg").style.display = "none";
+window.EMBED = {"generated_at":"2026-11-03T17:48:42+00:00","paused":false,"repo":"https://github.com/digital668/Blogs-Connecter-for-wordpress","sites":[{"key":"globel-connect","name":"Globel Connect","url":"https://globelconnect.in","enabled":true,"publish_mode":"draft","health":null,"interval_days":2,"builder":"divi","pages":0,"posts":0,"issue_counts":{"high":0,"medium":0,"low":0},"crawled_at":null,"status":{"test_error":null,"builder":"divi","can_scripts":true,"test_ok":"2026-11-03T17:48:42+00:00"},"issue":null,"clicks":null,"clicks_prev":null,"impressions":null,"impressions_prev":null,"articles_total":0,"indexed":0,"index_checked":0,"needs_review":0,"avg_rankmath":null,"next_scheduled":null},{"key":"kaizen-klub","name":"Kaizen Klub","url":"https://blogs.kaizenklub.in","enabled":true,"publish_mode":"draft","health":null,"interval_days":2,"builder":"auto","pages":0,"posts":0,"issue_counts":{"high":0,"medium":0,"low":0},"crawled_at":null,"status":{"test_error":"secret WP_PASS_KAIZEN_KLUB is not set"},"issue":null,"clicks":null,"clicks_prev":null,"impressions":null,"impressions_prev":null,"articles_total":0,"indexed":0,"index_checked":0,"needs_review":0,"avg_rankmath":null,"next_scheduled":null}],"runs":[],"details":{"globel-connect":{"key":"globel-connect","name":"Globel Connect","url":"https://globelconnect.in","enabled":true,"publish_mode":"draft","interval_days":2,"builder":"divi","group":"us-it-bpo","ymyl":false,"issue":null,"crawled_at":null,"pages":0,"posts":0,"health":null,"issue_counts":{"high":0,"medium":0,"low":0},"issues":[],"site_checks":{},"gsc":{},"candidates":[],"competitor_gaps":[],"refresh":[],"internal_links":[],"prospecting":[],"articles":[],"status":{"test_error":null,"builder":"divi","can_scripts":true,"test_ok":"2026-11-03T17:48:42+00:00"}},"kaizen-klub":{"key":"kaizen-klub","name":"Kaizen Klub","url":"https://blogs.kaizenklub.in","enabled":true,"publish_mode":"draft","interval_days":2,"builder":"auto","group":null,"ymyl":false,"issue":null,"crawled_at":null,"pages":0,"posts":0,"health":null,"issue_counts":{"high":0,"medium":0,"low":0},"issues":[],"site_checks":{},"gsc":{},"candidates":[],"competitor_gaps":[],"refresh":[],"internal_links":[],"prospecting":[],"articles":[],"status":{"test_error":"secret WP_PASS_KAIZEN_KLUB is not set"}}}};
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const num = n => n == null ? "—" : Math.round(n).toLocaleString();
@@ -257,7 +267,12 @@ function renderPane(d, t){
         <td><a href="${esc(q.google_url)}" target="_blank" rel="noopener"><code>${esc(q.query)}</code></a></td></tr>`), "Add seed_keywords to sites.yaml.")}`;
   }
 }
-load().catch(e => { document.querySelector("main").innerHTML = `<div class="err">Could not load dashboard data: ${esc(e.message)}. Run the workflow once, or open data/dashboard.html.</div>`; });
+load().catch(e => {
+  const m = $("#noscript-msg"); m.style.display = "block";
+  m.innerHTML = location.protocol === "file:" && !window.EMBED
+    ? "<b>This is the dashboard template, not the dashboard.</b> Download the real one from GitHub: Actions → open a run → Artifacts → <b>dashboard</b> → unzip → open <b>dashboard.html</b>."
+    : `<b>Could not load dashboard data:</b> ${esc(e.message)}. Run the workflow once (Actions → SEO Autopilot → Run workflow → report), then download the dashboard again.`;
+});
 </script>
 </body>
 </html>
