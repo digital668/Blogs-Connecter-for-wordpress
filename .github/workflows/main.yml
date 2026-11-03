@@ -1,9 +1,14 @@
 name: SEO Autopilot
 
+# One workflow does everything:
+#  • every day at 6:47 am IST — audit (Mon), research (Mon+Thu), index check (Thu), one blog per due site
+#  • Actions → Run workflow — run any command by hand
+#  • Issues — the "Add a website" form, and /commands typed on a website's issue
+# Every run first repairs the repo: misplaced files are moved into the right folders automatically.
+
 on:
   schedule:
-    - cron: "17 1 * * *"        # every day 01:17 UTC (6:47 am IST): audit (Mon), research (Mon+Thu),
-                                # then one blog for each site that is due, then the dashboard
+    - cron: "17 1 * * *"
   workflow_dispatch:
     inputs:
       command:
@@ -15,21 +20,52 @@ on:
         description: "Only this site key (blank = all enabled sites)"
         required: false
         default: ""
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
 
 permissions:
   contents: write
   issues: write
 
-concurrency:
-  group: seo-autopilot
-  cancel-in-progress: false
-
 jobs:
+  # ── daily schedule + manual runs ─────────────────────────────
   run:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 180
+    concurrency:
+      group: seo-autopilot
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v5
+
+      - name: Repair repo layout
+        run: |
+          set +e
+          git config user.name  "seo-autopilot[bot]"
+          git config user.email "seo-autopilot@users.noreply.github.com"
+          changed=0
+          move() {  # move a misplaced file to where it belongs (overwrites the old copy there)
+            [ -f "$1" ] || return 0
+            mkdir -p "$(dirname "$2")"
+            git mv -f "$1" "$2" 2>/dev/null || { cp -f "$1" "$2" && git rm -q -f "$1" && git add "$2"; }
+            echo "Moved $1 → $2"; changed=1
+          }
+          move add-website.yml .github/ISSUE_TEMPLATE/add-website.yml
+          move config.yml      .github/ISSUE_TEMPLATE/config.yml
+          move index.html      docs/index.html
+          move seo-autopilot-connector.zip wordpress-plugin/seo-autopilot-connector.zip
+          move test_pipeline.py tests/test_pipeline.py
+          for f in *.py; do [ -f "seo_platform/$f" ] && move "$f" "seo_platform/$f"; done
+          # copies of workflow files at the top level do nothing — remove them
+          for f in main.yml site-manager.yml seo-autopilot.yml; do
+            [ -f "$f" ] && git rm -q -f "$f" && echo "Removed unused $f" && changed=1
+          done
+          if [ ! -f .gitignore ]; then printf '__pycache__/\n*.pyc\n.env\n' > .gitignore; git add .gitignore; changed=1; fi
+          [ "$changed" = 1 ] && git commit -qm "SEO Autopilot: repaired file layout" && echo "::notice title=Repo repaired::Misplaced files were moved into the right folders."
+          exit 0
 
       - uses: actions/setup-python@v6
         with:
@@ -49,7 +85,6 @@ jobs:
           CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}
           IN_CMD: ${{ inputs.command }}
           IN_SITE: ${{ inputs.site }}
-
         run: |
           CMD="${IN_CMD:-auto}"
           ARGS=()
@@ -67,21 +102,116 @@ jobs:
 
       - name: Save results to the repo
         if: always()
+        env:
+          MSG: "SEO Autopilot: ${{ inputs.command || 'scheduled run' }}"
         run: |
           mkdir -p data docs/data
           git config user.name  "seo-autopilot[bot]"
           git config user.email "seo-autopilot@users.noreply.github.com"
-          git add -A data docs/data
-          if git diff --cached --quiet; then echo "Nothing new to save"; exit 0; fi
-          git commit -m "SEO Autopilot: ${IN_CMD:-scheduled run} $(date -u +%F)"
+          BR="${GITHUB_REF_NAME:-main}"
+          git add -A data docs/data sites.yaml 2>/dev/null
+          git diff --cached --quiet || git commit -qm "$MSG $(date -u +%F)"
+          git fetch -q origin "$BR"
+          if [ "$(git rev-list --count "origin/$BR..HEAD")" = "0" ]; then echo "Nothing new to save"; exit 0; fi
           for i in 1 2 3; do
-            git fetch -q origin "${GITHUB_REF_NAME:-main}"
-            if git rebase -X theirs "origin/${GITHUB_REF_NAME:-main}" && git push origin "HEAD:${GITHUB_REF_NAME:-main}"; then
-              echo "Saved"; exit 0
-            fi
+            if git rebase -X theirs "origin/$BR" && git push origin "HEAD:$BR"; then echo "Saved"; exit 0; fi
             git rebase --abort 2>/dev/null || true
             echo "Another run saved at the same time, retrying ($i/3)…"; sleep $((i * 5))
+            git fetch -q origin "$BR"
           done
           echo "::warning title=Save results::Could not save results. If this repeats: Settings → Actions → General → Workflow permissions → Read and write permissions → Save."
+
+  # ── "Add a website" form + /commands on issues ──────────────
+  manage:
+    # Only the repo owner / collaborators can add sites or run commands.
+    if: >-
+      (github.event_name == 'issues' &&
+        contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association))
+      ||
+      (github.event_name == 'issue_comment' && !github.event.issue.pull_request &&
+        startsWith(github.event.comment.body, '/') &&
+        contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: site-manager-${{ github.event.issue.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Skip if an old copy of site-manager.yml would reply twice
+        id: dup
+        run: |
+          if [ -f .github/workflows/site-manager.yml ]; then
+            echo "::warning title=Duplicate workflow::.github/workflows/site-manager.yml is no longer needed — delete it (main.yml now does its job)."
+            echo "skip=1" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Repair repo layout
+        if: steps.dup.outputs.skip != '1'
+        run: |
+          set +e
+          git config user.name  "seo-autopilot[bot]"
+          git config user.email "seo-autopilot@users.noreply.github.com"
+          changed=0
+          move() {  # move a misplaced file to where it belongs (overwrites the old copy there)
+            [ -f "$1" ] || return 0
+            mkdir -p "$(dirname "$2")"
+            git mv -f "$1" "$2" 2>/dev/null || { cp -f "$1" "$2" && git rm -q -f "$1" && git add "$2"; }
+            echo "Moved $1 → $2"; changed=1
+          }
+          move add-website.yml .github/ISSUE_TEMPLATE/add-website.yml
+          move config.yml      .github/ISSUE_TEMPLATE/config.yml
+          move index.html      docs/index.html
+          move seo-autopilot-connector.zip wordpress-plugin/seo-autopilot-connector.zip
+          move test_pipeline.py tests/test_pipeline.py
+          for f in *.py; do [ -f "seo_platform/$f" ] && move "$f" "seo_platform/$f"; done
+          # copies of workflow files at the top level do nothing — remove them
+          for f in main.yml site-manager.yml seo-autopilot.yml; do
+            [ -f "$f" ] && git rm -q -f "$f" && echo "Removed unused $f" && changed=1
+          done
+          if [ ! -f .gitignore ]; then printf '__pycache__/\n*.pyc\n.env\n' > .gitignore; git add .gitignore; changed=1; fi
+          [ "$changed" = 1 ] && git commit -qm "SEO Autopilot: repaired file layout" && echo "::notice title=Repo repaired::Misplaced files were moved into the right folders."
+          exit 0
+
+      - uses: actions/setup-python@v6
+        if: steps.dup.outputs.skip != '1'
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - if: steps.dup.outputs.skip != '1'
+        run: pip install -r requirements.txt
+
+      - name: Handle issue / command
+        if: steps.dup.outputs.skip != '1'
         env:
-          IN_CMD: ${{ inputs.command }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ALL_SECRETS: ${{ toJSON(secrets) }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          AUTOPILOT_PAUSED: ${{ vars.AUTOPILOT_PAUSED }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}
+        run: python -m seo_platform issue
+
+      - name: Save changes
+        if: always() && steps.dup.outputs.skip != '1'
+        env:
+          MSG: "SEO Autopilot: site manager (issue #${{ github.event.issue.number }})"
+        run: |
+          mkdir -p data docs/data
+          git config user.name  "seo-autopilot[bot]"
+          git config user.email "seo-autopilot@users.noreply.github.com"
+          BR="${GITHUB_REF_NAME:-main}"
+          git add -A data docs/data sites.yaml 2>/dev/null
+          git diff --cached --quiet || git commit -qm "$MSG $(date -u +%F)"
+          git fetch -q origin "$BR"
+          if [ "$(git rev-list --count "origin/$BR..HEAD")" = "0" ]; then echo "Nothing new to save"; exit 0; fi
+          for i in 1 2 3; do
+            if git rebase -X theirs "origin/$BR" && git push origin "HEAD:$BR"; then echo "Saved"; exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            echo "Another run saved at the same time, retrying ($i/3)…"; sleep $((i * 5))
+            git fetch -q origin "$BR"
+          done
+          echo "::warning title=Save results::Could not save results. If this repeats: Settings → Actions → General → Workflow permissions → Read and write permissions → Save."
