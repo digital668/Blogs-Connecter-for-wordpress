@@ -22,5 +22,20 @@
   },
   "est_cost_usd": 0.94,
   "drafts": 1
+ },
+ {
+  "at": "2026-11-03T18:41:01+00:00",
+  "model": "claude-sonnet-5-5",
+  "articles": 0,
+  "errors": {
+   "globel-connect": "Claude ran out of tokens before finishing \u2014 raise max_tokens"
+  },
+  "usage": {
+   "input_tokens": 69898,
+   "output_tokens": 4299,
+   "searches": 4
+  },
+  "est_cost_usd": 0.31,
+  "drafts": 0
  }
 ]
