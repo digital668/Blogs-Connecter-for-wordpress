@@ -59,5 +59,12 @@ jobs:
           git add -A sites.yaml data docs/data
           if git diff --cached --quiet; then echo "Nothing to save"; exit 0; fi
           git commit -m "SEO Autopilot: site manager (issue #${{ github.event.issue.number }})"
-          git pull --rebase --autostash || true
-          git push || echo "::warning title=Save::Could not push. Settings → Actions → General → Workflow permissions → Read and write."
+          for i in 1 2 3; do
+            git fetch -q origin "${GITHUB_REF_NAME:-main}"
+            if git rebase -X theirs "origin/${GITHUB_REF_NAME:-main}" && git push origin "HEAD:${GITHUB_REF_NAME:-main}"; then
+              echo "Saved"; exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            echo "Another run saved at the same time, retrying ($i/3)…"; sleep $((i * 5))
+          done
+          echo "::warning title=Save results::Could not save results. If this repeats: Settings → Actions → General → Workflow permissions → Read and write permissions → Save."
