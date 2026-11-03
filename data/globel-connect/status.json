@@ -1,3 +1,7 @@
 {
- "test_error": "secret WP_PASS_GLOBEL_CONNECT is not set"
+ "test_error": null,
+ "builder": "divi",
+ "can_scripts": true,
+ "gsc_error": "no gsc_property in sites.yaml",
+ "test_ok": "2026-11-03T17:18:22+00:00"
 }
