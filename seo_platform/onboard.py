@@ -179,7 +179,6 @@ def add_site(form: dict, issue: int | None = None) -> tuple[dict, str, dict]:
         "competitors": competitors,
         "writing_rules": "\n".join(f"- {r}" for r in rules),
         "cta": {"title": prof["cta_title"], "text": prof["cta_text"], "button": prof["cta_button"], "url": contact},
-        "gsc_property": f"sc-domain:{Site(key='x', name='x', url=url).root_domain}",
         "issue": issue,
         "enabled": True,
     }
