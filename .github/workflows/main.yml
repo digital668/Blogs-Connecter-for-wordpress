@@ -2,7 +2,8 @@ name: SEO Autopilot
 
 on:
   schedule:
-    - cron: "17 1 * * *"        # every day 01:17 UTC (6:47 am IST)
+    - cron: "17 1 * * *"        # every day 01:17 UTC (6:47 am IST): audit (Mon), research (Mon+Thu),
+                                # then one blog for each site that is due, then the dashboard
   workflow_dispatch:
     inputs:
       command:
@@ -48,11 +49,21 @@ jobs:
           CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}
           IN_CMD: ${{ inputs.command }}
           IN_SITE: ${{ inputs.site }}
+
         run: |
           CMD="${IN_CMD:-auto}"
           ARGS=()
           [ -n "$IN_SITE" ] && ARGS+=(--site "$IN_SITE")
           python -m seo_platform "$CMD" "${ARGS[@]}"
+
+      - name: Upload dashboard (open dashboard.html from the run's Artifacts)
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: dashboard
+          path: data/dashboard.html
+          if-no-files-found: ignore
+          retention-days: 30
 
       - name: Save results to the repo
         if: always()
@@ -63,16 +74,14 @@ jobs:
           git add -A data docs/data
           if git diff --cached --quiet; then echo "Nothing new to save"; exit 0; fi
           git commit -m "SEO Autopilot: ${IN_CMD:-scheduled run} $(date -u +%F)"
-          git pull --rebase --autostash || true
-          git push || echo "::warning title=Save results::Could not push results. Go to Settings → Actions → General → Workflow permissions → choose 'Read and write permissions' → Save."
+          for i in 1 2 3; do
+            git fetch -q origin "${GITHUB_REF_NAME:-main}"
+            if git rebase -X theirs "origin/${GITHUB_REF_NAME:-main}" && git push origin "HEAD:${GITHUB_REF_NAME:-main}"; then
+              echo "Saved"; exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            echo "Another run saved at the same time, retrying ($i/3)…"; sleep $((i * 5))
+          done
+          echo "::warning title=Save results::Could not save results. If this repeats: Settings → Actions → General → Workflow permissions → Read and write permissions → Save."
         env:
           IN_CMD: ${{ inputs.command }}
-
-      - name: Upload dashboard (open dashboard.html from the run's Artifacts)
-        if: always()
-        uses: actions/upload-artifact@v5
-        with:
-          name: dashboard
-          path: data/dashboard.html
-          if-no-files-found: ignore
-          retention-days: 30
