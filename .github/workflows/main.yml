@@ -1,0 +1,78 @@
+name: SEO Autopilot
+
+on:
+  schedule:
+    - cron: "17 1 * * *"        # every day 01:17 UTC (6:47 am IST)
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "What to run"
+        type: choice
+        default: test
+        options: [test, due, plan, write, daily, audit, research, indexcheck, report, auto]
+      site:
+        description: "Only this site key (blank = all enabled sites)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: seo-autopilot
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Run
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ALL_SECRETS: ${{ toJSON(secrets) }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          AUTOPILOT_PAUSED: ${{ vars.AUTOPILOT_PAUSED }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}
+          IN_CMD: ${{ inputs.command }}
+          IN_SITE: ${{ inputs.site }}
+        run: |
+          CMD="${IN_CMD:-auto}"
+          ARGS=()
+          [ -n "$IN_SITE" ] && ARGS+=(--site "$IN_SITE")
+          python -m seo_platform "$CMD" "${ARGS[@]}"
+
+      - name: Save results to the repo
+        if: always()
+        run: |
+          mkdir -p data docs/data
+          git config user.name  "seo-autopilot[bot]"
+          git config user.email "seo-autopilot@users.noreply.github.com"
+          git add -A data docs/data
+          if git diff --cached --quiet; then echo "Nothing new to save"; exit 0; fi
+          git commit -m "SEO Autopilot: ${IN_CMD:-scheduled run} $(date -u +%F)"
+          git pull --rebase --autostash || true
+          git push || echo "::warning title=Save results::Could not push results. Go to Settings → Actions → General → Workflow permissions → choose 'Read and write permissions' → Save."
+        env:
+          IN_CMD: ${{ inputs.command }}
+
+      - name: Upload dashboard (open dashboard.html from the run's Artifacts)
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: dashboard
+          path: data/dashboard.html
+          if-no-files-found: ignore
+          retention-days: 30
