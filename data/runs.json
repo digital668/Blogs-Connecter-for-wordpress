@@ -37,5 +37,16 @@
   },
   "est_cost_usd": 0.31,
   "drafts": 0
+ },
+ {
+  "at": "2026-11-04T07:30:31+00:00",
+  "model": "claude-sonnet-5-5",
+  "articles": 0,
+  "errors": {
+   "kaizen-klub": "secret WP_PASS_KAIZEN_KLUB is not set"
+  },
+  "usage": {},
+  "est_cost_usd": 0.0,
+  "drafts": 0
  }
 ]
