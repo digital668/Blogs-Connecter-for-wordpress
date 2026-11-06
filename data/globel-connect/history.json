@@ -59,5 +59,59 @@
    "contractions": 35
   },
   "humanize_ok": true
+ },
+ {
+  "title": "Health Insurance Lead Generation: Exclusive vs. Shared Leads and How Agencies Should Choose",
+  "slug": "health-insurance-lead-generation",
+  "focus_keyword": "health insurance lead generation",
+  "post_id": 903,
+  "link": "https://globelconnect.in/?p=903",
+  "edit_url": "https://globelconnect.in/wp-admin/post.php?post=903&action=edit",
+  "status": "draft",
+  "scheduled_for": null,
+  "written_at": "2026-11-06T07:59:33+00:00",
+  "word_count": 2121,
+  "needs_review": false,
+  "review_reasons": [],
+  "originality": {
+   "overlap": 0.0,
+   "closest": null,
+   "ok": true
+  },
+  "builder": "divi",
+  "image": {
+   "id": 902,
+   "url": "https://globelconnect.in/wp-content/uploads/2026/11/health-insurance-lead-generation.jpg",
+   "credit": "Image: MEDDAC Bavaria / Openverse (PDM)",
+   "source": "https://www.flickr.com/photos/143169464@N05/33223266795"
+  },
+  "unsourced_claims": [
+   "Most published health insurance lead generation pricing runs from under $5 for aged records to about $95 for live transfers."
+  ],
+  "keyword": "health insurance lead generation",
+  "geo_score": 100,
+  "geo_failed": [],
+  "quality": {
+   "overall": 79,
+   "filler_score": 0,
+   "ai_pattern_score": 0,
+   "repetition_score": 11,
+   "information_density": 0.21,
+   "flags": [],
+   "filler_hits": [],
+   "ai_hits": []
+  },
+  "rankmath_score": 100,
+  "rankmath_failed": [],
+  "humanize": {
+   "flesch": 57.2,
+   "avg_sentence_words": 14.6,
+   "sentence_variation": 8.9,
+   "passive_pct": 3.5,
+   "long_paragraphs": 0,
+   "ai_phrases_left": [],
+   "contractions": 16
+  },
+  "humanize_ok": true
  }
 ]
