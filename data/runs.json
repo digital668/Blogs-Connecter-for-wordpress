@@ -72,5 +72,14 @@
   },
   "est_cost_usd": 0.73,
   "drafts": 1
+ },
+ {
+  "at": "2026-11-07T07:12:17+00:00",
+  "model": "claude-sonnet-5-5",
+  "articles": 0,
+  "errors": {},
+  "usage": {},
+  "est_cost_usd": 0.0,
+  "drafts": 0
  }
 ]
