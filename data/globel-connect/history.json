@@ -113,5 +113,68 @@
    "contractions": 16
   },
   "humanize_ok": true
+ },
+ {
+  "title": "Higher Education Lead Generation: Which Channels Actually Fill Enrollment Funnels for Colleges and Training Providers",
+  "slug": "higher-education-lead-generation",
+  "focus_keyword": "higher education lead generation",
+  "post_id": 905,
+  "link": "https://globelconnect.in/?p=905",
+  "edit_url": "https://globelconnect.in/wp-admin/post.php?post=905&action=edit",
+  "status": "draft",
+  "scheduled_for": null,
+  "written_at": "2026-11-08T07:27:30+00:00",
+  "word_count": 3457,
+  "needs_review": true,
+  "review_reasons": [
+   "8 numbers/claims without a source \u2014 verify"
+  ],
+  "originality": {
+   "overlap": 0.0,
+   "closest": null,
+   "ok": true
+  },
+  "builder": "divi",
+  "image": {
+   "id": 904,
+   "url": "https://globelconnect.in/wp-content/uploads/2026/11/higher-education-lead-generation.jpg",
+   "credit": "Image: USDAgov / Openverse (PDM)",
+   "source": "https://www.flickr.com/photos/41284017@N08/52991663898"
+  },
+  "unsourced_claims": [
+   "You spend $24,000 and generate 160 applicants.",
+   "If 25% of those applicants enroll, you get 40 students.",
+   "CPE is $24,000 \u00f7 40 = $600 .",
+   "If only 15% enroll, you get 24 students.",
+   "CPE is $24,000 \u00f7 24 = $1,000 .",
+   "Same spend, same applicants, and a 67% higher cost per student.",
+   "We model $20\u2013$80, depending on audience and promotion channel.",
+   "We model 2\u20136%, and it's an assumption you'll need to verify."
+  ],
+  "keyword": "higher education lead generation",
+  "geo_score": 100,
+  "geo_failed": [],
+  "quality": {
+   "overall": 81,
+   "filler_score": 0,
+   "ai_pattern_score": 0,
+   "repetition_score": 12,
+   "information_density": 0.32,
+   "flags": [],
+   "filler_hits": [],
+   "ai_hits": []
+  },
+  "rankmath_score": 100,
+  "rankmath_failed": [],
+  "humanize": {
+   "flesch": 50.7,
+   "avg_sentence_words": 15.6,
+   "sentence_variation": 11.5,
+   "passive_pct": 1.4,
+   "long_paragraphs": 0,
+   "ai_phrases_left": [],
+   "contractions": 26
+  },
+  "humanize_ok": true
  }
 ]
