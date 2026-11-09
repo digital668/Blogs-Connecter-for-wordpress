@@ -7,9 +7,11 @@
  "write_error": null,
  "write_ok": "2026-11-08T07:27:47+00:00",
  "paused_reason": null,
- "next_due": "scheduled day",
- "research_ok": "2026-11-05T07:55:43+00:00",
+ "next_due": "last blog 1 day(s) ago, next in 1",
+ "research_ok": "2026-11-09T08:00:10+00:00",
  "research_error": null,
  "indexcheck_ok": "2026-11-05T07:56:07+00:00",
- "indexcheck_error": null
+ "indexcheck_error": null,
+ "audit_ok": "2026-11-09T07:59:37+00:00",
+ "audit_error": null
 }
