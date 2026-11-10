@@ -105,5 +105,21 @@
   "usage": {},
   "est_cost_usd": 0.0,
   "drafts": 0
+ },
+ {
+  "at": "2026-11-10T08:29:00+00:00",
+  "model": "claude-sonnet-5-5",
+  "articles": 0,
+  "errors": {
+   "kaizen-klub": "secret WP_PASS_KAIZEN_KLUB is not set",
+   "globel-connect": "'content_html'"
+  },
+  "usage": {
+   "input_tokens": 42172,
+   "output_tokens": 4243,
+   "searches": 4
+  },
+  "est_cost_usd": 0.23,
+  "drafts": 0
  }
 ]
