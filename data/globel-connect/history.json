@@ -176,5 +176,64 @@
    "contractions": 26
   },
   "humanize_ok": true
+ },
+ {
+  "title": "B2B Lead Generation Services in the USA: US Agency vs India-Based Provider for Healthcare, Education and Finance",
+  "slug": "b2b-lead-generation-services-in-usa",
+  "focus_keyword": "b2b lead generation services in usa",
+  "post_id": 907,
+  "link": "https://globelconnect.in/?p=907",
+  "edit_url": "https://globelconnect.in/wp-admin/post.php?post=907&action=edit",
+  "status": "draft",
+  "scheduled_for": null,
+  "written_at": "2026-11-12T08:27:18+00:00",
+  "word_count": 3936,
+  "needs_review": false,
+  "review_reasons": [],
+  "originality": {
+   "overlap": 0.0,
+   "closest": null,
+   "ok": true
+  },
+  "builder": "divi",
+  "image": {
+   "id": 906,
+   "url": "https://globelconnect.in/wp-content/uploads/2026/11/b2b-lead-generation-services-in-usa.jpg",
+   "credit": "Image: MEDDAC Bavaria / Openverse (PDM)",
+   "source": "https://www.flickr.com/photos/143169464@N05/32840474320"
+  },
+  "unsourced_claims": [
+   "For illustration only, at an assumed rate of \u20b985 per US$1, a seat priced at \u20b91,00,000 per month works out to about $1,176.",
+   "If Provider B's close rate matched A's at 12%, its cost per closed deal would drop to about $2,975."
+  ],
+  "keyword": "b2b lead generation services in usa",
+  "geo_score": 100,
+  "geo_failed": [],
+  "quality": {
+   "overall": 78,
+   "filler_score": 0,
+   "ai_pattern_score": 0,
+   "repetition_score": 13,
+   "information_density": 0.2,
+   "flags": [
+    "low information density (few specifics, names or numbers)"
+   ],
+   "filler_hits": [],
+   "ai_hits": []
+  },
+  "rankmath_score": 95,
+  "rankmath_failed": [
+   "Keyword density 0.74% (aim ~1\u20131.5%)"
+  ],
+  "humanize": {
+   "flesch": 56.8,
+   "avg_sentence_words": 16.4,
+   "sentence_variation": 17.6,
+   "passive_pct": 6.0,
+   "long_paragraphs": 0,
+   "ai_phrases_left": [],
+   "contractions": 59
+  },
+  "humanize_ok": true
  }
 ]

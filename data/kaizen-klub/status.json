@@ -1,11 +1,11 @@
 {
  "test_error": "secret WP_PASS_KAIZEN_KLUB is not set",
  "paused_reason": null,
- "next_due": "not this site's day in the cycle",
+ "next_due": "scheduled day",
  "write_error": "secret WP_PASS_KAIZEN_KLUB is not set",
- "research_ok": "2026-11-09T08:00:33+00:00",
+ "research_ok": "2026-11-12T08:22:17+00:00",
  "research_error": null,
- "indexcheck_ok": "2026-11-05T07:56:07+00:00",
+ "indexcheck_ok": "2026-11-12T08:22:17+00:00",
  "indexcheck_error": null,
  "audit_ok": "2026-11-09T07:59:47+00:00",
  "audit_error": null
