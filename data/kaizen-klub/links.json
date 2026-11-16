@@ -1,6 +1,20 @@
 {
  "internal": [
   {
+   "from": "https://blogs.kaizenklub.in/strength-training-for-beginners-guide/",
+   "from_title": "Strength Training for Beginners: Everything You Need to Know Before Joining a Gym",
+   "to": "https://blogs.kaizenklub.in/gym-etiquette-for-beginners/",
+   "anchor": "Gym Etiquette for Beginners: 15 Unwritten Rules Everyone Should Know",
+   "relevance": 0.23
+  },
+  {
+   "from": "https://blogs.kaizenklub.in/beginner-gym-mistakes/",
+   "from_title": "Gym Workout Mistakes Beginners Should Avoid | Kaizen Klub",
+   "to": "https://blogs.kaizenklub.in/gym-etiquette-for-beginners/",
+   "anchor": "Gym Etiquette for Beginners: 15 Unwritten Rules Everyone Should Know",
+   "relevance": 0.17
+  },
+  {
    "from": "https://blogs.kaizenklub.in/mma-classes-near-me-koramangala/",
    "from_title": "MMA Classes Near Me in Koramangala: How to Choose the Right MMA Gym",
    "to": "https://blogs.kaizenklub.in/gym-vs-fitness-studio/",
@@ -36,39 +50,25 @@
    "relevance": 0.2
   },
   {
-   "from": "https://blogs.kaizenklub.in/beginner-gym-mistakes/",
-   "from_title": "Gym Workout Mistakes Beginners Should Avoid | Kaizen Klub",
-   "to": "https://blogs.kaizenklub.in/infrared-sauna-benefits/",
-   "anchor": "What Is an Infrared Sauna? Benefits, Uses and Safety Tips | Kaizen Klub",
-   "relevance": 0.15
+   "from": "https://blogs.kaizenklub.in/mma-classes-near-me-koramangala/",
+   "from_title": "MMA Classes Near Me in Koramangala: How to Choose the Right MMA Gym",
+   "to": "https://blogs.kaizenklub.in/body-transformation-gym-koramangala/",
+   "anchor": "Best Gym in Koramangala for Body Transformation",
+   "relevance": 0.22
   },
   {
    "from": "https://blogs.kaizenklub.in/best-gym-in-koramangala/",
    "from_title": "Best Gym in Koramangala | Kaizen Klub Strength, Recovery & MMA",
-   "to": "https://blogs.kaizenklub.in/infrared-sauna-benefits/",
-   "anchor": "What Is an Infrared Sauna? Benefits, Uses and Safety Tips | Kaizen Klub",
-   "relevance": 0.15
+   "to": "https://blogs.kaizenklub.in/body-transformation-gym-koramangala/",
+   "anchor": "Best Gym in Koramangala for Body Transformation",
+   "relevance": 0.22
   },
   {
-   "from": "https://blogs.kaizenklub.in/yoga-for-weight-loss/",
-   "from_title": "Yoga for Weight Loss: Can Yoga Actually Help You Lose Weight?",
-   "to": "https://blogs.kaizenklub.in/zumba-for-weight-loss/",
-   "anchor": "Zumba for Weight Loss: Can Dancing Really Help You Lose Weight?",
-   "relevance": 0.44
-  },
-  {
-   "from": "https://blogs.kaizenklub.in/beginner-gym-workout-for-weight-loss/",
-   "from_title": "How to Start Your Weight Loss Journey at the Gym as a Beginner",
-   "to": "https://blogs.kaizenklub.in/zumba-for-weight-loss/",
-   "anchor": "Zumba for Weight Loss: Can Dancing Really Help You Lose Weight?",
-   "relevance": 0.18
-  },
-  {
-   "from": "https://blogs.kaizenklub.in/cardio-vs-strength-training-for-weight-loss/",
-   "from_title": "Cardio vs Strength Training for Weight Loss: Which Should You Choose?",
-   "to": "https://blogs.kaizenklub.in/zumba-for-weight-loss/",
-   "anchor": "Zumba for Weight Loss: Can Dancing Really Help You Lose Weight?",
-   "relevance": 0.18
+   "from": "https://blogs.kaizenklub.in/best-unisex-gym-in-koramangala/",
+   "from_title": "Looking for the Best Unisex Gym in Koramangala? 9 Things to Check Before You Join",
+   "to": "https://blogs.kaizenklub.in/body-transformation-gym-koramangala/",
+   "anchor": "Best Gym in Koramangala for Body Transformation",
+   "relevance": 0.2
   },
   {
    "from": "https://blogs.kaizenklub.in/strength-training-vs-weight-training/",
@@ -106,32 +106,39 @@
    "relevance": 0.15
   },
   {
-   "from": "https://blogs.kaizenklub.in/strength-training-vs-weight-training/",
-   "from_title": "Strength Training vs Weight Training: What\u2019s the Difference?",
-   "to": "https://blogs.kaizenklub.in/mobility-vs-flexibility/",
-   "anchor": "Mobility vs Flexibility: What\u2019s the Difference?",
-   "relevance": 0.17
-  },
-  {
    "from": "https://blogs.kaizenklub.in/best-gym-in-koramangala/",
    "from_title": "Best Gym in Koramangala | Kaizen Klub Strength, Recovery & MMA",
-   "to": "https://blogs.kaizenklub.in/beginner-gym-mistakes/",
-   "anchor": "Gym Workout Mistakes Beginners Should Avoid | Kaizen Klub",
-   "relevance": 0.27
-  },
-  {
-   "from": "https://blogs.kaizenklub.in/high-protein-indian-foods-muscle-gain/",
-   "from_title": "Protein-Rich Indian Foods for Muscle Building | Kaizen Klub",
-   "to": "https://blogs.kaizenklub.in/beginner-gym-mistakes/",
-   "anchor": "Gym Workout Mistakes Beginners Should Avoid | Kaizen Klub",
+   "to": "https://blogs.kaizenklub.in/infrared-sauna-benefits/",
+   "anchor": "What Is an Infrared Sauna? Benefits, Uses and Safety Tips | Kaizen Klub",
    "relevance": 0.15
   },
   {
-   "from": "https://blogs.kaizenklub.in/infrared-sauna-benefits/",
-   "from_title": "What Is an Infrared Sauna? Benefits, Uses and Safety Tips | Kaizen Klub",
-   "to": "https://blogs.kaizenklub.in/beginner-gym-mistakes/",
-   "anchor": "Gym Workout Mistakes Beginners Should Avoid | Kaizen Klub",
-   "relevance": 0.15
+   "from": "https://blogs.kaizenklub.in/yoga-for-weight-loss/",
+   "from_title": "Yoga for Weight Loss: Can Yoga Actually Help You Lose Weight?",
+   "to": "https://blogs.kaizenklub.in/zumba-for-weight-loss/",
+   "anchor": "Zumba for Weight Loss: Can Dancing Really Help You Lose Weight?",
+   "relevance": 0.44
+  },
+  {
+   "from": "https://blogs.kaizenklub.in/beginner-gym-workout-for-weight-loss/",
+   "from_title": "How to Start Your Weight Loss Journey at the Gym as a Beginner",
+   "to": "https://blogs.kaizenklub.in/zumba-for-weight-loss/",
+   "anchor": "Zumba for Weight Loss: Can Dancing Really Help You Lose Weight?",
+   "relevance": 0.18
+  },
+  {
+   "from": "https://blogs.kaizenklub.in/cardio-vs-strength-training-for-weight-loss/",
+   "from_title": "Cardio vs Strength Training for Weight Loss: Which Should You Choose?",
+   "to": "https://blogs.kaizenklub.in/zumba-for-weight-loss/",
+   "anchor": "Zumba for Weight Loss: Can Dancing Really Help You Lose Weight?",
+   "relevance": 0.18
+  },
+  {
+   "from": "https://blogs.kaizenklub.in/cold-plunge-benefits/",
+   "from_title": "Cold Plunge Benefits: What Happens to Your Body After an Ice Bath?",
+   "to": "https://blogs.kaizenklub.in/red-light-therapy-benefits/",
+   "anchor": "Red Light Therapy Benefits: What Does It Actually Do for Your Body?",
+   "relevance": 0.17
   },
   {
    "from": "https://blogs.kaizenklub.in/zumba-for-weight-loss/",
@@ -169,8 +176,8 @@
    "relevance": 0.27
   },
   {
-   "from": "https://blogs.kaizenklub.in/gym-vs-fitness-studio/",
-   "from_title": "Gym vs Fitness Studio: Which Is Right for You?",
+   "from": "https://blogs.kaizenklub.in/body-transformation-gym-koramangala/",
+   "from_title": "Best Gym in Koramangala for Body Transformation",
    "to": "https://blogs.kaizenklub.in/mma-classes-near-me-koramangala/",
    "anchor": "MMA Classes Near Me in Koramangala: How to Choose the Right MMA Gym",
    "relevance": 0.22
