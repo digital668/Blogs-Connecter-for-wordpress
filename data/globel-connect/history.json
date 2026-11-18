@@ -297,5 +297,65 @@
    "contractions": 46
   },
   "humanize_ok": true
+ },
+ {
+  "title": "B2B Lead Generation Examples: 9 Campaigns That Work for Healthcare, Education and Finance Businesses",
+  "slug": "b2b-lead-generation-examples",
+  "focus_keyword": "b2b lead generation examples",
+  "post_id": 910,
+  "link": "https://globelconnect.in/?p=910",
+  "edit_url": "https://globelconnect.in/wp-admin/post.php?post=910&action=edit",
+  "status": "draft",
+  "scheduled_for": null,
+  "written_at": "2026-11-18T08:39:16+00:00",
+  "word_count": 3423,
+  "needs_review": true,
+  "review_reasons": [
+   "7 numbers/claims without a source \u2014 verify"
+  ],
+  "originality": {
+   "overlap": 0.001,
+   "closest": "https://globelconnect.in/?p=907",
+   "ok": true
+  },
+  "builder": "divi",
+  "image": null,
+  "unsourced_claims": [
+   "You spend $2,400 in a month on calling time, list data and tools.",
+   "CPL is $40.",
+   "CPQL is $100.",
+   "Contact rate = conversations with the right person \u00f7 records dialled or emailed (300 \u00f7 1,000 = 30%).",
+   "Appointment-set rate = meetings booked \u00f7 conversations (60 \u00f7 300 = 20%).",
+   "Qualification rate = qualified leads \u00f7 total leads (24 \u00f7 60 = 40%).",
+   "Lead-to-opportunity rate = opportunities opened \u00f7 leads (6 \u00f7 60 = 10%)."
+  ],
+  "keyword": "b2b lead generation examples",
+  "geo_score": 100,
+  "geo_failed": [],
+  "quality": {
+   "overall": 84,
+   "filler_score": 0,
+   "ai_pattern_score": 0,
+   "repetition_score": 14,
+   "information_density": 0.46,
+   "flags": [],
+   "filler_hits": [],
+   "ai_hits": []
+  },
+  "rankmath_score": 90,
+  "rankmath_failed": [
+   "Focus keyword in image alt",
+   "Images or videos in content"
+  ],
+  "humanize": {
+   "flesch": 52.3,
+   "avg_sentence_words": 18.3,
+   "sentence_variation": 21.5,
+   "passive_pct": 1.1,
+   "long_paragraphs": 0,
+   "ai_phrases_left": [],
+   "contractions": 29
+  },
+  "humanize_ok": true
  }
 ]
