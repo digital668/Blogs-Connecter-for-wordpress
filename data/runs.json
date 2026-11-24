@@ -271,5 +271,17 @@
   "usage": {},
   "est_cost_usd": 0.0,
   "drafts": 0
+ },
+ {
+  "at": "2026-11-24T10:56:15+00:00",
+  "model": "claude-sonnet-5-5",
+  "articles": 0,
+  "errors": {
+   "kaizen-klub": "secret WP_PASS_KAIZEN_KLUB is not set",
+   "globel-connect": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChMdc88BTAZjsWdoLBX5z'}"
+  },
+  "usage": {},
+  "est_cost_usd": 0.0,
+  "drafts": 0
  }
 ]
