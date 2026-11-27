@@ -306,5 +306,16 @@
   "usage": {},
   "est_cost_usd": 0.0,
   "drafts": 0
+ },
+ {
+  "at": "2026-11-27T09:41:33+00:00",
+  "model": "claude-sonnet-5-5",
+  "articles": 0,
+  "errors": {
+   "globel-connect": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChTDLSbiTvBktqrZmxKtg'}"
+  },
+  "usage": {},
+  "est_cost_usd": 0.0,
+  "drafts": 0
  }
 ]
